@@ -2,7 +2,7 @@
 name = "baliem"
 version = "0.1.0"
 edition = "2018"
-authors = ["Guillaume Pinot <texitoi@texitoi.eu>", "Robin Krahl <robin.krahl@ireas.org>", "Nasaruddin <nasaruddin.nasa@icloud.com>"]
+authors = ["Nasaruddin <nasaruddin.nasa@icloud.com>"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
