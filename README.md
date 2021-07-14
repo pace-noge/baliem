@@ -30,6 +30,10 @@ Current wiring based on layout in layout.rs
 ![wiring](images/wiring.png)
 
 
+## PIN OUT
+
+![pinout](images/pinout.png)
+
 ## Compiling
 
 Install the rust toolchain
