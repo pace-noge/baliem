@@ -4,6 +4,9 @@ A hand wired hhkb layout keyboard. it uses [keyberon](https://gtihub.com/Texitoi
 
 ![Layout](images/layout.png)
 
+2nd layer
+![2nd Layer](images/2nd_layer.png)
+
 ## Material
   - a STM32F103C8T6 aka blue pill
   - Acrylic Sandwich case you can find it at dxf folder
