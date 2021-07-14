@@ -20,7 +20,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.toolchain }}
-          target: thumbv6m-none-eabi
+          target: thumbv7m-none-eabi
           override: true
 
       - name: cargo build release
