@@ -1,5 +1,5 @@
 use keyberon::action::Action::Trans;
-use keyberon::action::{d, k, l, m};
+use keyberon::action::{k, l, m};
 use keyberon::key_code::KeyCode::*;
 use keyberon::action::Action::{self, *};
 
