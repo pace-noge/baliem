@@ -1,0 +1,17 @@
+on: [push, pull_request]
+
+name: Baliem CI
+
+jobs:
+  buidl_and_test:
+    name: Build and Test firmware
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolcahin@v1
+        with:
+          toolchain: stable
+      - uses: action-rs/cargo@v1
+        with:
+          command: objcopy
+          args: --bin baliem --release -- -O binary baliem.bin
