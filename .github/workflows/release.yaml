@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Rust ${{ matrix.toolchain }}
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          target: thumbv7m-none-eabi
+          override: true
+          components: llvm-tools-preview
+
+      - name: Install cargo-binutils
+        uses: actions-rs/cargo@v1
+        with:
+          crate: cargo-binutils
+          version: latest
+          use-tool-cache: true
+
+      - name: Run cargo build --release
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release
+
+      - name: Run cargo objcopy
+        uses: actions-rs/cargo@v1
+        with:
+          command: objcopy
+          args: --release --bin baliem -- -O binary baliem_hhkb.bin
+
+      - name: Extract version from tag
+        id: version_tag
+        run: echo ::set-output name=TAG_VERSION::${GITHUB_REF#refs/tags/}
+
+      - name: Rename .elf and .bin files
+        env:
+          TAG_VERSION: ${{ steps.version_tag.outputs.TAG_VERSION }}
+        run: |
+          mv target/thumbv7m-none-eabi/release/baliem_hhkb baliem-hhkb-$TAG_VERSION.elf
+          mv baliem_hhkb.bin baliem-hhkb-$TAG_VERSION.bin
+
+      - name: Create release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secret.GITHUB_TOKEN }}
+          file: baliem-hhkb*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
