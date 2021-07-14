@@ -4,7 +4,9 @@ A hand wired hhkb layout keyboard. it uses [keyberon](https://gtihub.com/Texitoi
 
 ![Layout](images/layout.png)
 
+
 2nd layer
+
 ![2nd Layer](images/2nd_layer.png)
 
 ## Material
