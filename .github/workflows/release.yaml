@@ -51,7 +51,7 @@ jobs:
         env:
           TAG_VERSION: ${{ steps.version_tag.outputs.TAG_VERSION }}
         run: |
-          mv target/thumbv7m-none-eabi/release/baliem_hhkb baliem-hhkb-$TAG_VERSION.elf
+          mv target/thumbv7m-none-eabi/release/baliem baliem-hhkb-$TAG_VERSION.elf
           mv baliem_hhkb.bin baliem-hhkb-$TAG_VERSION.bin
 
       - name: Create release
