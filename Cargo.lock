@@ -39,11 +39,11 @@ checksum = "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
 name = "baliem"
 version = "0.1.0"
 dependencies = [
- "cortex-m 0.7.3",
+ "cortex-m 0.6.7",
  "cortex-m-rt",
  "cortex-m-rtic",
  "embedded-hal",
- "generic-array 0.14.4",
+ "generic-array 0.13.3",
  "keyberon",
  "panic-halt",
  "stm32f1xx-hal",
