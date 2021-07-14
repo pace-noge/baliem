@@ -1,6 +1,10 @@
-on: [push, pull_request]
+name: Baliem Ci
 
-name: Baliem CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   buidl_and_test:
