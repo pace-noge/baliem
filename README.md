@@ -23,6 +23,13 @@ this is the raw data for [keyboard layout](http://www.keyboard-layout-editor.com
 
 ```
 
+## Wiring
+
+Current wiring based on layout in layout.rs
+
+![wiring](images/wiring.png)
+
+
 ## Compiling
 
 Install the rust toolchain
