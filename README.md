@@ -1,4 +1,4 @@
-# Baliem-keyberon ![Build status](https://github.com/pace-noge/baliem/actions/workflows/ci.yml/badge.svg)
+# Baliem-keyberon ![Build status](https://github.com/pace-noge/baliem/actions/workflows/ci.yml/badge.svg) ![Release status](https://github.com/pace-noge/baliem/actions/workflows/release.yaml/badge.svg)
 
 A hand wired hhkb layout keyboard. it uses [keyberon](https://gtihub.com/Texitoi/keyberon) for its firmware.
 
