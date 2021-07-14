@@ -7,15 +7,24 @@ on:
     branches: [main]
 
 jobs:
-  buidl_and_test:
+  compile:
     name: Build and Test firmware
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
     steps:
       - uses: actions/checkout@v2
+      - name: Install Rust ${{ matrix.toolchain }}
       - uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
-      - uses: action-rs/cargo@v1
+          toolchain: ${{ matrix.toolchain }}
+          target: thumbv6m-none-eabi
+          override: true
+
+      - name: cargo build release
+        uses: actions-rs/cargo@v1
         with:
-          command: objcopy
-          args: --bin baliem --release -- -O binary baliem.bin
+          command: build
+          args: --release
