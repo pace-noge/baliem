@@ -41,24 +41,25 @@ Current wiring based on layout in layout.rs
 
 ## Compiling
 
-Install the rust toolchain
+Install the rust toolchain, currently keyberon run on rust 1.47.0 [issue](https://github.com/TeXitoi/keyseebee/issues/8#issuecomment-738706670)
 ```shell
 curl https://sh.rustup.rs -sSf | sh
-rustup target add thumbv7m-none-eabi
-rustup component add llvm-tools-preview
-cargo install cargo-binutils
+rustup toolchain install 1.47.0
+rustup target add thumbv7m-none-eabi --toolchain 1.47.0
+rustup component add llvm-tools-preview --toolchain 1.47.0
+rustup run 1.47.0 cargo install cargo-binutils
 ```
 
 Compile the firmware
 ```shell
-cargo objcopy --bin baliem --release -- -O binary baliem.bin
+rustup run 1.47.0 cargo objcopy --bin baliem --release -- -O binary baliem60.bin
 ```
 
 ## Flashing using DFU
 
 Put the keyboard into flashing mode. (hit the reset button on the blue pill). Then falsh it:
 ```shell
-sudo dfu-util -d 1eaf:0003 -a 2 -D baliem.bin
+sudo dfu-util -d 1eaf:0003 -a 2 -D baliem60.bin
 ```
 
 Push reset and the keyboard was ready to go.
