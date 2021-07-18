@@ -52,8 +52,8 @@ pub static LAYERS: keyberon::layout::Layers = &[
     ], &[
         &[k(Power),     k(F1),      k(F2),              k(F3),          k(F4),          k(F5),              k(F6),      k(F7),          k(F8),      k(F9),       k(F10),            k(F11),     k(F12),         k(Insert),      k(Delete)   ],
         &[k(CapsLock),  Trans,      Trans,              Trans,          Trans,          Trans,              Trans,      Trans,          Trans,      k(PScreen),  k(ScrollLock),     k(Pause),   k(Up),          Trans,          k(Clear)    ],
-        &[Trans,        Trans,      k(MediaVolDown),    k(MediaVolUp),  k(MediaMute),   k(MediaEjectCD),    Trans,      k(KpAsterisk),  k(KpSlash), k(Home),     k(PgUp),           k(Right),   k(Left),        k(Enter),       Trans       ],
-        &[Trans,        Trans,      CUT,                COPY,           PASTE,          Trans,              Trans,      Trans,          Trans,      Trans,       k(End),            k(PgDown),  k(Down),        k(End),         Trans       ],
+        &[Trans,        Trans,      k(MediaVolDown),    k(MediaVolUp),  k(MediaMute),   k(MediaEjectCD),    Trans,      k(KpAsterisk),  k(KpSlash), k(Home),     k(PgUp),           k(Left),    k(Right),       k(Enter),       Trans       ],
+        &[Trans,        Trans,      CUT,                COPY,           PASTE,          Trans,              Trans,      k(KpPlus),      k(KpMinus), k(End),      k(PgDown),         k(Down),    Trans,          Trans,          Trans       ],
         &[Trans,        Trans,      Trans,              Trans,          Trans,          Trans,              Trans,      Trans,          Trans,      Trans,       Trans,             Trans,      Trans,          Trans,          Trans       ],
     ],
 ];
