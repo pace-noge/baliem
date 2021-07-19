@@ -37,22 +37,23 @@ impl keyberon::keyboard::Leds for Leds {
 }
 
 pub struct Cols(
-    pub PB12<Input<PullUp>>,
-    pub PB13<Input<PullUp>>,
-    pub PB14<Input<PullUp>>,
-    pub PB15<Input<PullUp>>,
-    pub PA8<Input<PullUp>>,
-    pub PA9<Input<PullUp>>,
-    pub PA10<Input<PullUp>>,
-    pub PB5<Input<PullUp>>,
-    pub PB6<Input<PullUp>>,
-    pub PB7<Input<PullUp>>,
-    pub PB8<Input<PullUp>>,
-    pub PB9<Input<PullUp>>,
-    pub PA6<Input<PullUp>>,
-    pub PA5<Input<PullUp>>,
     pub PA4<Input<PullUp>>,
+    pub PA5<Input<PullUp>>,
+    pub PA6<Input<PullUp>>,
+    pub PB9<Input<PullUp>>,
+    pub PB8<Input<PullUp>>,
+    pub PB7<Input<PullUp>>,
+    pub PB6<Input<PullUp>>,
+    pub PB5<Input<PullUp>>,
+    pub PA10<Input<PullUp>>,
+    pub PA9<Input<PullUp>>,
+    pub PA8<Input<PullUp>>,
+    pub PB15<Input<PullUp>>,
+    pub PB14<Input<PullUp>>,
+    pub PB13<Input<PullUp>>,
+    pub PB12<Input<PullUp>>,
 );
+
 impl_heterogenous_array! {
     Cols,
     dyn InputPin<Error = Infallible>,
