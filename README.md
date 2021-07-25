@@ -57,7 +57,7 @@ rustup run 1.47.0 cargo objcopy --bin baliem --release -- -O binary baliem60.bin
 
 ## Flashing using DFU
 
-Put the keyboard into flashing mode. (hit the reset button on the blue pill). Then falsh it:
+Put the keyboard into flashing mode. (hit the reset button on the blue pill). Then flash it:
 ```shell
 sudo dfu-util -d 1eaf:0003 -a 2 -D baliem60.bin
 ```
