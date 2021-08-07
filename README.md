@@ -37,7 +37,7 @@ Current wiring based on layout in layout.rs
 
 ## PIN OUT
 
-![pinout](images/pinout.png)
+![pinout](images/pinout_hhkb.png)
 
 ## Compiling
 
