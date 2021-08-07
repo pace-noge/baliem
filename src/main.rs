@@ -145,6 +145,9 @@ const APP: () = {
 
         let matrix = Matrix::new(
             Cols(
+                gpioa.pa1.into_pull_up_input(&mut gpioa.crl),
+                gpioa.pa2.into_pull_up_input(&mut gpioa.crl),
+                gpioa.pa3.into_pull_up_input(&mut gpioa.crl),
                 gpioa.pa4.into_pull_up_input(&mut gpioa.crl),
                 gpioa.pa5.into_pull_up_input(&mut gpioa.crl),
                 gpioa.pa6.into_pull_up_input(&mut gpioa.crl),
@@ -156,9 +159,9 @@ const APP: () = {
                 gpioa.pa10.into_pull_up_input(&mut gpioa.crh),
                 gpioa.pa9.into_pull_up_input(&mut gpioa.crh),
                 gpioa.pa8.into_pull_up_input(&mut gpioa.crh),
-                gpiob.pb15.into_pull_up_input(&mut gpiob.crh),
-                gpiob.pb14.into_pull_up_input(&mut gpiob.crh),
-                gpiob.pb13.into_pull_up_input(&mut gpiob.crh),
+                // gpiob.pb15.into_pull_up_input(&mut gpiob.crh),
+                // gpiob.pb14.into_pull_up_input(&mut gpiob.crh),
+                // gpiob.pb13.into_pull_up_input(&mut gpiob.crh),
                 gpiob.pb12.into_pull_up_input(&mut gpiob.crh),
             ),
             Rows(
