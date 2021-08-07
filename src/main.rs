@@ -37,6 +37,9 @@ impl keyberon::keyboard::Leds for Leds {
 }
 
 pub struct Cols(
+    pub PA1<Input<PullUp>>,
+    pub PA2<Input<PullUp>>,
+    pub PA3<Input<PullUp>>,
     pub PA4<Input<PullUp>>,
     pub PA5<Input<PullUp>>,
     pub PA6<Input<PullUp>>,
@@ -48,9 +51,9 @@ pub struct Cols(
     pub PA10<Input<PullUp>>,
     pub PA9<Input<PullUp>>,
     pub PA8<Input<PullUp>>,
-    pub PB15<Input<PullUp>>,
-    pub PB14<Input<PullUp>>,
-    pub PB13<Input<PullUp>>,
+    // pub PB15<Input<PullUp>>,
+    // pub PB14<Input<PullUp>>,
+    // pub PB13<Input<PullUp>>,
     pub PB12<Input<PullUp>>,
 );
 
