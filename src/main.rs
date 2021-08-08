@@ -11,12 +11,16 @@ use keyberon::layout::Layout;
 use keyberon::matrix::{Matrix, PressedKeys};
 use panic_halt as _;
 use rtic::app;
+use stm32f1xx_hal as hal;
 use stm32f1xx_hal::gpio::{gpioa::*, gpiob::*, Input, Output, PullUp, PushPull};
 use stm32f1xx_hal::prelude::*;
 use stm32f1xx_hal::usb::{Peripheral, UsbBus, UsbBusType};
 use stm32f1xx_hal::{gpio, pac, timer};
 use usb_device::bus::UsbBusAllocator;
 use usb_device::class::UsbClass as _;
+use usb_device::prelude::*;
+use serde::{Serialize, Deserialize};
+pub mod leds;
 
 mod layout;
 
@@ -122,7 +126,7 @@ const APP: () = {
 
         let mut led = gpioc.pc13.into_push_pull_output(&mut gpioc.crh);
         led.set_high().unwrap();
-        let leds = Leds { caps_lock: led };
+        let caps_lock_leds = Leds { caps_lock: led };
 
         let usb_dm = gpioa.pa11;
         let usb_dp = usb_dp.into_floating_input(&mut gpioa.crh);
@@ -136,8 +140,16 @@ const APP: () = {
         *USB_BUS = Some(UsbBus::new(usb));
         let usb_bus = USB_BUS.as_ref().unwrap();
 
+        const VID: u16 = 0x16c0;
+        const PID: u16 = 0x27db;
+
         let usb_class = keyberon::new_class(usb_bus, leds);
-        let usb_dev = keyberon::new_device(usb_bus);
+        // let usb_dev = keyberon::new_device(usb_bus);
+        let usb_dev = UsbDeviceBuilder::new(usb_bus, UsbVidPid(VID, PID))
+            .manufacturer("Bilal Keeb")
+            .product("baliem60")
+            .serial_number(env!("CARGO_PKG_VERSION"))
+            .build();
 
         let mut timer =
             timer::Timer::tim3(c.device.TIM3, &clocks, &mut rcc.apb1).start_count_down(1.khz());
@@ -173,6 +185,11 @@ const APP: () = {
             ),
         );
 
+        let streams StreamTuple::new(c.device.DMA1)
+        let stream = stream.4;
+
+        let leds = leds::LEDs::new(c.device.SPI2, gpiob.pb15.into_alternate_af5(), clocks, stream)
+
         init::LateResources {
             usb_dev,
             usb_class,
@@ -180,6 +197,7 @@ const APP: () = {
             debouncer: Debouncer::new(PressedKeys::default(), PressedKeys::default(), 5),
             matrix: matrix.unwrap(),
             layout: Layout::new(layout::LAYERS),
+            leds
         }
     }
 
